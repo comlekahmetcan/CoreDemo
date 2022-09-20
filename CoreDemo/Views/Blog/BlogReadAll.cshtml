@@ -19,49 +19,51 @@
                 <div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">
                     @foreach (var item in Model)
                     {
-                    <div class="blog-grid-top">
-                        <div class="b-grid-top">
-                            <div class="blog_info_left_grid">
-                                <a href="single.html">
-                                    <img src="~/web/images/b1.jpg" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="blog-info-middle">
-                                <ul>
-                                    <li>
-                                        <a href="#">
+                        <div class="blog-grid-top">
+                            <div class="b-grid-top">
+                                <div class="blog_info_left_grid">
+                                    <a href="single.html">
+                                        <img src="~/web/images/b1.jpg" class="img-fluid" alt="">
+                                    </a>
+                                </div>
+                                <div class="blog-info-middle">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
                                                 <i class="far fa-calendar-alt"></i> @(((DateTime)item.BlogCreateDate).ToString("dd-MMM-yyyy"))
-                                        </a>
-                                    </li>
-                                    <li class="mx-2">
-                                        <a href="#">
-                                            <i class="far fa-thumbs-up"></i> 0 Beğeni
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="far fa-comment"></i> 0 Yorum
-                                        </a>
-                                    </li>
+                                            </a>
+                                        </li>
+                                        <li class="mx-2">
+                                            <a href="#">
+                                                <i class="far fa-thumbs-up"></i> 0 Beğeni
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="far fa-comment"></i> 0 Yorum
+                                            </a>
+                                        </li>
 
-                                </ul>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
 
-                        <h3>
-                            <a href="single.html">@item.BlogTitle </a>
-                        </h3>
-                        <p>@item.BlogContent
-                        </p>
-                        <a href="/Blog/Index" class="btn btn-primary read-m">Blog Listesi</a>
-                    </div>
+                            <h3>
+                                <a href="single.html">@item.BlogTitle </a>
+                            </h3>
+                            <p>
+                                @item.BlogContent
+                            </p>
+                            <a href="/Blog/Index" class="btn btn-primary read-m">Blog Listesi</a>
+                        </div>
 
 
                     }
 
-                    @await Component.InvokeAsync("CommentListByBlog")
-@*                    @await Html.PartialAsync("~/Views/Comment/CommentListByBlog.cshtml")
-*@
+                    @await Component.InvokeAsync("CommentListByBlog",new {id=ViewBag.i})
+
+                    @*                    @await Html.PartialAsync("~/Views/Comment/CommentListByBlog.cshtml")
+                    *@
                     @await Html.PartialAsync("~/Views/Comment/PartialAddComment.cshtml");
                 </div>
 
@@ -81,30 +83,14 @@
                             </form>
 
                         </div>
+                        @await Component.InvokeAsync("CategoryList")
                         <div class="tech-btm">
-                            <h4>Categories</h4>
-                            <ul class="list-group single">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Cras justo odio
-                                    <span class="badge badge-primary badge-pill">14</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Dapibus ac facilisis in
-                                    <span class="badge badge-primary badge-pill">2</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    Morbi leo risus
-                                    <span class="badge badge-primary badge-pill">1</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tech-btm">
-                            <h4>Top stories of the week</h4>
+                            <h4>Yazarın Diğer Yazıları</h4>
 
                             <div class="blog-grids row mb-3">
                                 <div class="col-md-5 blog-grid-left">
                                     <a href="single.html">
-                                        <img src="images/1.jpg" class="img-fluid" alt="">
+                                        <img src="~/web/images/1.jpg" class="img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="col-md-7 blog-grid-right">
@@ -123,7 +109,7 @@
                             <div class="blog-grids row mb-3">
                                 <div class="col-md-5 blog-grid-left">
                                     <a href="single.html">
-                                        <img src="images/6.jpg" class="img-fluid" alt="">
+                                        <img src="~/web/images/6.jpg" class="img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="col-md-7 blog-grid-right">
@@ -163,11 +149,11 @@
                             </div>
                         </div>
                         <div class="single-gd tech-btm">
-                            <h4>Recent Post</h4>
+                            <h4>Son Eklenen Post</h4>
                             <div class="blog-grids">
                                 <div class="blog-grid-left">
                                     <a href="single.html">
-                                        <img src="images/b1.jpg" class="img-fluid" alt="">
+                                        <img src="~/web/images/b1.jpg" class="img-fluid" alt="">
                                     </a>
                                 </div>
                                 <div class="blog-grid-right">
