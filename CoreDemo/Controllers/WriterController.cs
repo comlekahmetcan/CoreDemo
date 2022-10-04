@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoreDemo.Controllers
 {
-    [Authorize]
     public class WriterController : Controller
     {
         public IActionResult Index()
