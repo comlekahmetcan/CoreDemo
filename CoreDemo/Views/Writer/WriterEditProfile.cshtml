@@ -4,6 +4,8 @@
     ViewData["Title"] = "WriterEditProfile";
     Layout = "~/Views/Shared/Writerlayout.cshtml";
 }
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
 
 @using (Html.BeginForm("WriterEditProfile", "Writer", FormMethod.Post))
 {
@@ -12,6 +14,7 @@
             <div class="card-body">
                 <h4 class="card-title">Yazar Profil Bilgileri Düzenleme</h4>
                 <br />
+                @Html.HiddenFor(x=>x.WriterID,new{@class="form-control"})
                 <form class="forms-sample">
                     <div class="form-group">
                         <label for="exampleInputName1">Yazar Ad Soyad</label>
@@ -23,7 +26,11 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword4">Şifre</label>
-                        @Html.PasswordFor(x=>x.WriterPassword,new{@class="form-control"})
+                        @Html.PasswordFor(x=>x.WriterPassword,new{@class="form-control",@id="password"})
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Şifre</label>
+                        @Html.PasswordFor(x=>x.WriterPassword,new{@class="form-control",@id="cpassword"})
                     </div>
                     <div class="form-group">
                         <label>Yazar Görsel</label>
@@ -39,7 +46,7 @@
                         <label for="exampleTextarea1">Yazar Hakkında</label>
                         @Html.TextAreaFor(x=>x.WriterAbout, 10, 3,new{@class="form-control"})
                     </div>
-                    <button type="submit" class="btn btn-gradient-danger mr-2">Güncelle</button>
+                    <button type="submit" class="btn btn-gradient-danger mr-2" onclick="return Validate()">Güncelle</button>
                     <button class="btn btn-light">İptal</button>
                 </form>
             </div>
@@ -47,3 +54,14 @@
     </div>
 }
 
+<script type="text/javascript">
+    function Validate() {
+        var password = document.getElementById("password").value;
+        var cpassword = document.getElementById("cpassword").value;
+        if (password != cpassword) {
+            swal("Şifreler eşleşmemiştir, girdiğiniz şifreyi kontrol ediniz.!");
+            return false;
+        }
+        return true;
+    }
+</script>
