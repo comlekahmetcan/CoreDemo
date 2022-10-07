@@ -28,7 +28,30 @@
                                         @item.BlogTitle
                                     </td>
                                     <td>
-                                        <label class="badge badge-gradient-success">@item.Category.CategoryName</label>
+                                        @if (@item.Category.CategoryName == "Yazılım")
+                                        {
+                                            <span class="badge badge-pill badge-secondary">@item.Category.CategoryName</span>
+                                        }
+                                        else if (@item.Category.CategoryName == "Teknoloji")
+                                        {
+                                            <span class="badge badge-pill badge-danger">@item.Category.CategoryName</span>
+                                        }
+                                        else if (@item.Category.CategoryName == "Tiyatro")
+                                        {
+                                            <span class="badge badge-pill badge-success">@item.Category.CategoryName</span>
+                                        }
+                                        else if (@item.Category.CategoryName == "Fim & Dizi")
+                                        {
+                                            <span class="badge badge-pill badge-info">@item.Category.CategoryName</span>
+                                        }
+                                        else if (@item.Category.CategoryName == "Oyun")
+                                        {
+                                            <span class="badge badge-pill badge-primary">@item.Category.CategoryName</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-pill badge-dark">@item.Category.CategoryName</span>
+                                        }
                                     </td>
                                     <td> @(((DateTime)item.BlogCreateDate).ToString("dd-MMM-yyyy"))</td>
                                     <td><a href="/Blog/BlogReadAll/@item.BlogID" class="btn btn-dark">Detaylar</a></td>
