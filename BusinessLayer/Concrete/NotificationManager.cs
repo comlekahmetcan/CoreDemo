@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    internal class NotificationManager : INotificationService
+    public class NotificationManager : INotificationService
     {
         INotificationDal _notificationDal;
 
@@ -20,7 +20,7 @@ namespace BusinessLayer.Concrete
 
         public List<Notification> GetList()
         {
-            throw new NotImplementedException();
+            return _notificationDal.GetListAll();
         }
 
         public void TAdd(Notification t)
