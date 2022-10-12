@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IMessageService : IGenericService<Message>
     {
+        List<Message> GetInboxListByWriter(string p);//writer mailden gelen parametre olacak
     }
 }
