@@ -1,0 +1,61 @@
+﻿@using EntityLayer.Concrete
+@model List<Notification>
+
+@{
+    ViewData["Title"] = "AllNotification";
+    Layout = "~/Views/Shared/Writerlayout.cshtml";
+}
+
+<h1>Bildirimler</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Bildirim</th>
+        <th>Tarih</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.NotificationID</td>
+            <td>@item.NotificationDetails</td>
+            @*            <td>@item.NotificationDate.ToShortDateString()</td>
+        *@            @*<td>
+        @{
+        DateTime tarih1 = DateTime.Now; // mevcut tarih bilgisi
+        var tarih2 = @item.NotificationDate; // veritabanındaki tarih bilgisi
+        var kalan_sure = (tarih1 - tarih2); // iki tarih arasındaki fark
+        }
+        @kalan_sure.TotalDays saat önce bildirim geldi
+        </td>*@
+            <td>
+                @{
+                    string gün = " gün önce bildirim geldi";
+                    string saat = " saat önce bildirim geldi";
+                    string dakika = " dakika önce bildirim geldi";
+                    DateTime now = DateTime.Now;
+                    TimeSpan ts = now - item.NotificationDate;
+                    int days = Math.Abs(ts.Days);
+                    int hours = Math.Abs(ts.Hours);
+                    int min = Math.Abs(ts.Minutes);
+                    if (days == 0)
+                    {
+                        if (hours == 0)
+                        {
+                            @(ts.Minutes.ToString() + dakika)
+                        }
+                        else
+                        {
+                            @(ts.Hours.ToString() + saat)
+                        }
+                    }
+                    else
+                    {
+                        @(ts.Days.ToString() + gün)
+
+                    }
+                }
+            </td>
+        </tr>
+    }
+</table>
+
