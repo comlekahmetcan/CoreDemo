@@ -1,0 +1,23 @@
+﻿@model EntityLayer.Concrete.Message2
+
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/Writerlayout.cshtml";
+}
+
+<h1>Mesaj Detay Sayfası</h1>
+
+@Html.Label("Blog ID")
+@Html.TextBoxFor(x=>x.MessageID,new{@class="form-control"})
+<br />
+@Html.Label("Mesaj Başlığı")
+@Html.TextBoxFor(x=>x.Subject,new{@class="form-control"})
+<br />
+@Html.Label("Mesaj İçeriği")
+@Html.TextAreaFor(x=>x.MessageDetails,10,3,new{@class="form-control"})
+<br />
+
+
+<a href="/Message/InBox/" class="btn btn-success">Mesajlara Dön</a>
+
+
