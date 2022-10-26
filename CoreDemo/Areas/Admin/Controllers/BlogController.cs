@@ -9,6 +9,8 @@ using System.Linq.Expressions;
 
 namespace CoreDemo.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+
     public class BlogController : Controller
     {
         public IActionResult ExportStaticExcelBlogList()
@@ -43,6 +45,11 @@ namespace CoreDemo.Areas.Admin.Controllers
                 new BlogModel{ID=3,BlogName="2022 Olimpiyatları"},
             };
             return bm;
+        }
+
+        public IActionResult BlogListExcel()
+        {
+            return View();
         }
     }
 }
