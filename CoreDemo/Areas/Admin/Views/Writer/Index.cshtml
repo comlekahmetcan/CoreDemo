@@ -52,6 +52,10 @@
                 success: function (func) {
                     let w = jQuery.parseJSON(func);
                     console.log(w);
+
+                    let getValue = `<table class=table table-bordered> <tr><th>Yazar ID</th><th>Yazar Adı</th></tr>
+                                    <tr><td>${w.Id}</td><td>${w.Name}</td></tr>`;
+                    $("#writerget").html(getValue);
                 }
             })
         })
