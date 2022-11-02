@@ -2,8 +2,10 @@
 using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace CoreDemo.Areas.Admin.Controllers
@@ -19,6 +21,13 @@ namespace CoreDemo.Areas.Admin.Controllers
         public IActionResult WriterList()
         {
             var jsonWriter = JsonConvert.SerializeObject(writers);
+            return Json(jsonWriter);
+        }
+
+        public IActionResult GetWriterByID(int writerId)
+        {
+            var findWriter = writers.FirstOrDefault(x => x.Id == writerId);
+            var jsonWriter = JsonConvert.SerializeObject(findWriter);
             return Json(jsonWriter);
         }
 
